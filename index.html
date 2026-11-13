@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Birthday Surprise ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  --pink:#f5b8c9;
+  --rose:#d97998;
+  --cream:#fff9f5;
+  --ink:#76515d;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(circle at 15% 10%,#fff 0 7%,transparent 28%),
+  linear-gradient(135deg,#fff5f2,#ffe8ef 55%,#fff8f2);
+  color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+}
+
+.page {
+  max-width:1000px;
+  margin:auto;
+  padding:48px 22px 65px;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+
+.eyebrow {
+  letter-spacing:4px;
+  text-transform:uppercase;
+  font-size:11px;
+  color:#c17b91;
+  font-weight:700;
+}
+
+h1 {
+  font:700 clamp(2.6rem,7vw,5.2rem)/1.05 'Playfair Display',serif;
+  margin:15px 0 8px;
+  color:#b95f7d;
+}
+
+h1 span {
+  font-style:italic;
+  color:#df91a8;
+}
+
+.subtitle {
+  font-size:15px;
+  color:#98717c;
+  margin:0 auto 28px;
+  max-width:540px;
+  line-height:1.8;
+}
+
+.start {
+  border:0;
+  border-radius:999px;
+  background:#c96f8d;
+  color:white;
+  padding:14px 24px;
+  font-weight:700;
+  letter-spacing:.3px;
+  box-shadow:0 8px 22px #d98ca544;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.start:hover {
+  transform:translateY(-2px);
+  box-shadow:0 12px 25px #d98ca566;
+}
+
+.music-note {
+  font-size:12px;
+  color:#a77e89;
+  margin-top:10px;
+}
+
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin:48px auto 40px;
+  max-width:850px;
+}
+
+.photo-card {
+  position:relative;
+  background:#fff;
+  padding:12px 12px 17px;
+  border-radius:8px;
+  box-shadow:0 12px 30px #b66f8220;
+  transform:rotate(var(--tilt));
+  transition:transform .25s,box-shadow .25s;
+}
+
+.photo-card:hover {
+  transform:translateY(-8px) rotate(0deg);
+  box-shadow:0 18px 35px #b66f8230;
+}
+
+.photo-frame {
+  height:235px;
+  border:5px solid #fff0f4;
+  outline:1px solid #f2c5d1;
+  border-radius:5px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#ffe8ef,#fff7f2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.photo-frame img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.caption {
+  font:italic 17px 'Playfair Display',serif;
+  color:#a9637a;
+  margin-top:13px;
+}
+
+.heart-stamp {
+  position:absolute;
+  right:8px;
+  top:8px;
+  color:#e49bb0;
+  background:#fff9f5;
+  border-radius:50%;
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  font-size:15px;
+  box-shadow:0 2px 8px #b66f8220;
+  z-index:2;
+}
+
+.message {
+  max-width:690px;
+  margin:0 auto;
+  background:#ffffffa8;
+  border:1px solid #f5d4dd;
+  border-radius:22px;
+  padding:28px 30px;
+  box-shadow:0 10px 30px #b66f8210;
+}
+
+.message .tiny {
+  font-size:22px;
+  color:#d58ba1;
+}
+
+.message h2 {
+  font:600 27px 'Playfair Display',serif;
+  color:#b96582;
+  margin:7px 0 12px;
+}
+
+.message p {
+  font-size:14px;
+  line-height:1.9;
+  color:#8c6873;
+  margin:0;
+}
+
+.signoff {
+  font:italic 18px 'Playfair Display',serif;
+  color:#c47790;
+  margin-top:17px;
+}
+
+footer {
+  font-size:11px;
+  color:#c18a9a;
+  margin-top:35px;
+  letter-spacing:1px;
+}
+
+.float {
+  position:fixed;
+  bottom:-40px;
+  z-index:0;
+  pointer-events:none;
+  animation:rise linear infinite;
+  opacity:.65;
+  color:#e59bb0;
+}
+
+@keyframes rise {
+  0% {
+    transform:translateY(0) rotate(0deg);
+    opacity:0;
+  }
+  12% { opacity:.7; }
+  100% {
+    transform:translateY(-115vh) rotate(35deg);
+    opacity:0;
+  }
+}
+
+@media(max-width:650px) {
+  .page { padding-top:38px; }
+
+  .gallery {
+    grid-template-columns:1fr;
+    max-width:310px;
+    gap:24px;
+    margin-top:36px;
+  }
+
+  .photo-frame { height:270px; }
+
+  .photo-card:nth-child(2) {
+    --tilt:2deg!important;
+  }
+
+  .message { padding:24px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+  <div class="eyebrow">a little something for dani's 19th b-day</div>
+
+  <h1>Happy Birthday, <span>Dani!</span> ♡</h1>
+
+  <p class="subtitle">
+    Today is 13/11/2026, and 19 years ago,
+    someone VERY special named 
+    NUR DANIA ATIQAH was born!!!!!
+  </p>
+
+  <button class="start" id="surprise">
+    ♡ Tap this ♡
+  </button>
+
+  <div class="music-note" id="musicStatus">
+    Tap to play a little birthday tune ♪
+  </div>
+
+  <!-- THREE PHOTOS FROM YOUR FOLDER -->
+
+  <section class="gallery" aria-label="Pictures of us">
+
+    <article class="photo-card" style="--tilt:-3deg">
+      <div class="heart-stamp">♡</div>
+
+      <div class="photo-frame">
+        <img src="photo1.jpg" alt="Memory one">
+      </div>
+
+      <div class="caption">alieya</div>
+    </article>
+
+    <article class="photo-card" style="--tilt:2deg">
+      <div class="heart-stamp">♡</div>
+
+      <div class="photo-frame">
+        <img src="photo2.jpg" alt="Memory two">
+      </div>
+
+      <div class="caption">miss</div>
+    </article>
+
+    <article class="photo-card" style="--tilt:-1deg">
+      <div class="heart-stamp">♡</div>
+
+      <div class="photo-frame">
+        <img src="photo3.jpg" alt="Memory three">
+      </div>
+
+      <div class="caption">dani</div>
+    </article>
+
+  </section>
+
+  <!-- BIRTHDAY MESSAGE -->
+
+  <section class="message">
+
+    <div class="tiny">✿ &nbsp; ♡ &nbsp; ✿</div>
+
+    <h2>hi dani yg imut</h2>
+
+    <p>
+      All the best in your life sifu computer ku.
+      It's your last year being a teenager. Enjoy
+      while it lasts. Moga hidup kamu sentiasa
+      dipermudah urusan, dilindungi Allah SWT and
+      berjaya dunia akhirat. Sweet 19 Dani ♡
+    </p>
+
+    <div class="signoff">
+      With lots and lots of love ♡
+    </div>
+
+  </section>
+
+  <footer>MADE BY ALIEYA YG RIIINDUUU DANIIII ✧</footer>
+
+</main>
+
+<script>
+
+// FLOATING HEARTS AND LOVE LETTERS
+
+const floatBits = ['♡','♥','love','xoxo','✧','♡','sweet'];
+
+for (let i = 0; i < 22; i++) {
+
+  const el = document.createElement('div');
+
+  el.className = 'float';
+  el.textContent = floatBits[i % floatBits.length];
+
+  el.style.left = (Math.random() * 100) + 'vw';
+  el.style.animationDuration = (9 + Math.random() * 11) + 's';
+  el.style.animationDelay = (-Math.random() * 18) + 's';
+  el.style.fontSize = (13 + Math.random() * 17) + 'px';
+
+  document.body.appendChild(el);
+}
+
+
+// LOCAL BIRTHDAY MUSIC
+
+const btn = document.getElementById('surprise');
+const status = document.getElementById('musicStatus');
+
+// Load MP3 from your music folder
+const birthdayMusic = new Audio('happy-birthday.mp3');
+
+birthdayMusic.loop = false;
+birthdayMusic.volume = 0.7;
+
+
+// PLAY AND PAUSE BUTTON
+
+btn.addEventListener('click', async () => {
+
+  if (!birthdayMusic.paused) {
+
+    birthdayMusic.pause();
+
+    btn.textContent = '♡ Play birthday tune again ♡';
+
+    status.textContent = 'The music has paused. Make a wish! ♡';
+
+  } else {
+
+    try {
+
+      // Restart from the beginning if the song has ended
+      if (birthdayMusic.ended) {
+        birthdayMusic.currentTime = 0;
+      }
+
+      await birthdayMusic.play();
+
+      btn.textContent = '♡ Pause the birthday tune ♡';
+
+      status.textContent = '♪ Happy Birthday to you... ♪';
+
+    } catch (error) {
+
+      status.textContent = 'Unable to play music. Check your MP3 file! ♡';
+
+      console.error(error);
+
+    }
+
+  }
+
+});
+
+
+// UPDATE BUTTON WHEN SONG FINISHES
+
+birthdayMusic.addEventListener('ended', () => {
+
+  btn.textContent = '♡ Play birthday tune again ♡';
+
+  status.textContent = 'Sending you the biggest birthday hug ♡';
+
+});
+
+</script>
+
+</body>
+</html>
